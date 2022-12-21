@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>index</title>
+</head>
+<body>
+
+<script type="text/javascript"></script>
+	<script>
+		var number1
+	number1=window.prompt("please enter a number");
+	number1=parseInt(number1,10);
+
+	var number2
+	number2=window.prompt("please enter another number");
+	number2=parseInt(number2,10);
+
+	if(number1>number2)
+	{
+		document.body.style.backgroundColor='#00B2B2';
+		document.writeln("<h3>first input > second input</h3>");
+	}
+	else if(number1<number2)
+	{
+		document.body.style.backgroundColor='#A1FFA1';
+		document.writeln("<h3>second input > first input</h3>");
+	}
+	else if (number1==number2)
+	{
+		document.body.style.backgroundColor='#FFFF8C';
+		document.writeln("<h3>second input = first input</h3>");
+	}
+	document.write("<p>");
+	</script>
+
+	<input type="button" value="1st button" onClick="alert('the first number is: '+number1)">
+	<input type="button" value="2nd button" onClick="alert('the second number is: '+number2)">
+
+
+</body>
+</html>
