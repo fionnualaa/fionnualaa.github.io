@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jvscript_lab2</title>
+</head>
+<body>
+
+	<form action="#">
+		<input id="rollButton" type="button" value="Roll Dice">
+		</form>
+
+		<p> </p>
+		<img id="die1"  src="die1.png" alt="blank image">
+		<img id="die2"  src="die1.png" alt="blank image">
+		<img id="die3"  src="die1.png" alt="blank image">
+		<img id="die4"  src="die1.png" alt="blank image">
+		<img id="die5"  src="die1.png" alt="blank image">
+		<img id="die6"  src="die1.png" alt="blank image">
+		<p></p>
+		<img id="die7"  src="die1.png" alt="blank image">
+		<img id="die8"  src="die1.png" alt="blank image">
+		<img id="die9"  src="die1.png" alt="blank image">
+		<img id="die10" src="die1.png" alt="blank image">
+		<img id="die11" src="die1.png" alt="blank image">
+		<img id="die12" src="die1.png" alt="blank image">
+
+	<script type="text/javascript"></script>
+	<script>
+
+		
+
+		//variable used to interact with the img elements
+		
+			var die1Image;
+			var die2Image;
+			var die3Image;
+			var die4Image;
+			var die5Image;
+			var die6Image;
+			var die7Image;
+			var die8Image;
+			var die9Image;
+			var die10Image;
+			var die11Image;
+			var die12Image;
+
+
+		//variables to count appearance of each face
+			var face1=0;
+			var face2=0; 
+			var face3=0; 
+			var face4=0; 
+			var face5=0; 
+			var face6=0;
+			var total=0;
+	
+
+		//register button listener and get the img elements
+		function start()
+		{
+			var button =document.getElementById("rollButton");
+			button.addEventListener("click",rollDice);
+			die1Image =document.getElementById("die1");
+			die2Image =document.getElementById("die2");
+			die3Image =document.getElementById("die3");
+			die4Image =document.getElementById("die4");
+			die5Image =document.getElementById("die5");
+			die6Image =document.getElementById("die6");
+			die7Image =document.getElementById("die7");
+			die8Image =document.getElementById("die8");
+			die9Image =document.getElementById("die9");
+			die10Image=document.getElementById("die10");
+			die11Image=document.getElementById("die11");
+			die12Image=document.getElementById("die12");
+			
+
+		}//end function start
+
+		//roll the dice
+		function rollDice()
+		{
+			
+			var face;//face rolled
+			
+			for(var i=1; i<=12; ++i)
+			{
+					face=Math.floor(1+Math.random()*6);
+					
+					setImage(i,face); //display appropruate die image
+					tallyRolls(face); //increment freqency counter
+					total++;
+					 //increment total	
+			}
+			updateFrequencyTable();
+			
+		}//end rolling loop
+
+		//set src and alt attrubutes for a dice + facetimes
+		function setImage(dieNumber,face)
+		{
+			
+			switch(dieNumber)
+			{
+				case 1:
+					die1Image.setAttribute("src","die"+face+".png")
+					die1Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;	
+
+				case 2:
+					die2Image.setAttribute("src","die"+face+".png")
+					die2Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 3:
+					die3Image.setAttribute("src","die"+face+".png")
+					die3Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 4:
+					die4Image.setAttribute("src","die"+face+".png")
+					die4Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 5:
+					die5Image.setAttribute("src","die"+face+".png")
+					die5Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 6:
+					die6Image.setAttribute("src","die"+face+".png")
+					die6Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 7:
+					die7Image.setAttribute("src","die"+face+".png")
+					die7Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 8:
+					die8Image.setAttribute("src","die"+face+".png")
+					die8Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 9:
+					die9Image.setAttribute("src","die"+face+".png")
+					die9Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 10:
+					die10Image.setAttribute("src","die"+face+".png")
+					die10Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 11:
+					die11Image.setAttribute("src","die"+face+".png")
+					die11Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+
+				case 12:
+					die12Image.setAttribute("src","die"+face+".png")
+					die12Image.setAttribute("alt","die image with "+face +"dot(s)")
+					break;
+															
+			}//end switch
+
+		}//end function setImage
+
+		function tallyRolls(face)
+		{
+			switch(face)
+			{
+				case 1:
+					++face1;
+					break;
+				case 2:
+					++face2;
+					break;	
+				case 3:
+					++face3;
+					break;
+				case 4:
+					++face4;
+					break;
+				case 5:
+					++face5;
+					break;
+				case 6:
+					++face6;
+					break;				
+			}//end switch
+
+		}//end function tallyRolls
+
+		//update frequency table in the page
+		function updateFrequencyTable()
+		{
+			var tableDiv=document.getElementById("frequencyTableDiv");
+
+			tableDiv.innerHTML="<table border=2>"+
+				"<caption>DIE ROLLING FREQUENCIES</caption>"+ "<thead><th>Face</th><th>Frequency</th>"+ "<th>percentage</th></thead>"+
+				"<tbody><tr> <td>1</td> <td>"+face1+"</td> <td>"+Math.floor((face1/total)*100)+"%"+"</td> </tr>"+
+				"<tbody><tr> <td>2</td> <td>"+face2+"</td> <td>"+Math.floor((face2/total)*100)+"%"+"</td> </tr>"+
+				"<tbody><tr> <td>3</td> <td>"+face3+"</td> <td>"+Math.floor((face3/total)*100)+"%"+"</td> </tr>"+
+				"<tbody><tr> <td>4</td> <td>"+face4+"</td> <td>"+Math.floor((face4/total)*100)+"%"+"</td> </tr>"+
+				"<tbody><tr> <td>5</td> <td>"+face5+"</td> <td>"+Math.floor((face5/total)*100)+"%"+"</td> </tr>"+
+				"<tbody><tr> <td>6</td> <td>"+face6+"</td> <td>"+Math.floor((face6/total)*100)+"%"+"</td> </tr>"+
+				"</tbody></table>";
+		}//end function updateFrequencyTable
+
+		
+		window.addEventListener("load",start,false);
+	</script>	
+
+	<div id="frequencyTableDiv"></div>
+</body>
+</html>
