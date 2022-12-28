@@ -7,6 +7,12 @@
 </head>
 <body>
 
+	<style>
+	body {
+	background-color: #FFE8E8;
+	
+	</style>
+
 	<div id="block">
 		<h2 class="header">JS Calculator</h2>
 		<form>
@@ -38,26 +44,27 @@
 			var n1 =parseInt(document.getElementById('num1').value);//get & convert 1st input to int
 
 			var n2 =parseInt(document.getElementById('num2').value);//get & convert 2nd input to int
-			var operator =parseInt(document.getElementById('operate'.value()));//get the calculator mode
+			var operator =parseInt(document.getElementById('operate').value);//get the calculator mode
 
 			switch(operator)
 			{
 				case 0:
 					document.getElementById('result').innerHTML=add(n1, n2);
-					document.writeln("hi");
+					break;	
 
 				case 1:
 					document.getElementById('result').innerHTML=minus(n1, n2);
+					break;	
 
 				case 2:
 					document.getElementById('result').innerHTML=multiply(n1, n2);
+					break;	
 
 				case 3:		
 					document.getElementById('result').innerHTML=divide(n1, n2);
+					break;	
 			}
-		}
-		
-		document.writeln("hi3")
+
 
 		function add(num1, num2)
 		{
@@ -76,6 +83,10 @@
 		{
 			return num1/num2;
 		}
+
+		}
+		
+		
 
 	</script>	
 
